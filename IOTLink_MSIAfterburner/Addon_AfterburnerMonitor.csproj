@@ -6,6 +6,11 @@
     <AssemblyName>AfterburnerMonitor</AssemblyName>
     <RootNamespace>IOTLinkAddon</RootNamespace>
     <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <RepositoryUrl>https://github.com/kwilliams1987/IOTLink_MSIAfterburner</RepositoryUrl>
+    <Authors>Kristian Williams</Authors>
+    <AssemblyVersion>1.0.0.1</AssemblyVersion>
+    <FileVersion>$(AssemblyVersion)</FileVersion>
+    <Copyright>© 2021 Kristian Williams, IOTLink is the property of Alexandre Leites © 2019</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
