@@ -11,6 +11,7 @@
     <AssemblyVersion>1.0.0.1</AssemblyVersion>
     <FileVersion>$(AssemblyVersion)</FileVersion>
     <Copyright>© 2021 Kristian Williams, IOTLink is the property of Alexandre Leites © 2019</Copyright>
+    <Product>MSI Afterburner Addon for IOTLink</Product>
   </PropertyGroup>
 
   <ItemGroup>
