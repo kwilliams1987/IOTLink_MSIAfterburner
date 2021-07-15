@@ -1,0 +1,9 @@
+﻿########################################################################
+# Addon Information
+########################################################################
+enabled: true
+id: AfterburnerMonitor
+name: MSI Afterburner Monitor
+file: AfterburnerMonitor.dll
+minApiVersion: 2.2.0
+maxApiVersion: 

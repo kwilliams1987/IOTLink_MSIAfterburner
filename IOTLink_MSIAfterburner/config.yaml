@@ -1,0 +1,53 @@
+﻿enabled: true
+interval: 5000 # Poll interval in milliseconds
+
+ignore_devices: []
+
+sensors:
+  Framerate:
+    enabled: true
+  CPU:
+    Temp:
+      enabled: true
+    Usage:
+      enabled: true
+    Clock:
+      enabled: true
+    Power:
+      enabled: true
+  Memory:
+    Usage:
+      enabled: true
+    CommitCharge:
+      enabled: true
+  GPU:
+    Temp:
+      enabled: true
+    MemoryTemp:
+      enabled: true
+    VRMTemp:
+      enabled: true
+    FanSpeed:
+      enabled: true
+    Clock:
+      enabled: true
+    ShaderClock:
+      enabled: true
+    MemoryUsed:
+      enabled: true
+    Voltage:
+      enabled: true
+    MemoryVoltage:
+      enabled: true
+    MemoryClock:
+      enabled: true
+    Power:
+      enabled: true
+    Usage:
+      enabled: true
+    FrameBufferUsage:
+      enabled: true
+    VIDUsage:
+      enabled: true
+    BusUsage:
+      enabled: true
