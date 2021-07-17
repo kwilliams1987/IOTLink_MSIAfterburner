@@ -7,7 +7,7 @@ namespace IOTLinkAddon.Shared.Interop
     static class MetricExtensions
     {
         public static MonitorItem GetMonitorItem(this Metric metric) 
-            => MonitorItem.MonitorItems.FirstOrDefault(m => m.SourceId == metric.SourceId);
+            => MonitorItem.MonitorItems.Find(metric.SourceId);
 
         public static bool IsEnabled(this Metric metric, Configuration configuration)
         {

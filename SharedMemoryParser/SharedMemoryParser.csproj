@@ -7,6 +7,8 @@
     <Description>MSI Afterburner Memory Parser</Description>
     <PackageProjectUrl></PackageProjectUrl>
     <RepositoryUrl>https://github.com/kwilliams1987/IOTLink_MSIAfterburner</RepositoryUrl>
+    <AssemblyVersion>1.0.1.2</AssemblyVersion>
+    <FileVersion>$(AssemblyVersion)</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

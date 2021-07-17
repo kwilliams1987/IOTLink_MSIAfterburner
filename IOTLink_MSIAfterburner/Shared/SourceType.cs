@@ -30,6 +30,8 @@
         GpuPower = 97,
         GpuTempLimit = 112,
         GpuPowerLimit = 113,
+        GpuCoreVoltageLimit = 114,
+        GpuLoadLimit = 116,
         CpuTemp = 128,
         CpuUsage = 144,
         MemoryUsage = 145,

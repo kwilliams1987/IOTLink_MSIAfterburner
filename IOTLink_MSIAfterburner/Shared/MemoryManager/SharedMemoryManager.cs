@@ -141,7 +141,7 @@ namespace IOTLinkAddon.Shared.MemoryManager
                     continue;
                 }
 
-                var itemType = MonitorItem.MonitorItems.FirstOrDefault(m => m.SourceId == sourceType);
+                var itemType = MonitorItem.MonitorItems.Find(sourceType);
 
                 if (itemType == default)
                 {

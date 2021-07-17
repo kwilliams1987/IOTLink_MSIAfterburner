@@ -179,15 +179,15 @@ namespace IOTLinkAddon.Service
 
                     if (used.Value.HasValue && used.Value != 0 && used.IsEnabled(_config))
                     {
-                        PublishDiscoveryAndValue($"{prefix}/MemoryTotal", Memory, "MB", string.Format(labelFormat, prefix, "Total Memory"), gpu.Memory, prefix, 0);
-                        PublishDiscoveryAndValue($"{prefix}/MemoryUsage", Memory, "%", string.Format(labelFormat, prefix, "Memory Usage"), used.Value.Value / gpu.Memory, prefix, 0);
-                        PublishDiscoveryAndValue($"{prefix}/MemoryAvailable", Memory, "MB", string.Format(labelFormat, prefix, "Available Memory"), gpu.Memory - used.Value.Value, prefix, 0);
+                        PublishDiscoveryAndValue($"{prefix}/MemoryTotal", Memory, "MB", string.Format(labelFormat, prefix, "Total Memory"), gpu.Memory.ToString("F0"), prefix);
+                        PublishDiscoveryAndValue($"{prefix}/MemoryUsage", Memory, "%", string.Format(labelFormat, prefix, "Memory Usage"), (used.Value.Value / gpu.Memory).ToString("F0"), prefix);
+                        PublishDiscoveryAndValue($"{prefix}/MemoryAvailable", Memory, "MB", string.Format(labelFormat, prefix, "Available Memory"), (gpu.Memory - used.Value.Value).ToString("F0"), prefix);
                     }
                 }
 
                 foreach (var metric in gpu.Metrics.WhereEnabled(_config))
                 {
-                    var metadata = MonitorItem.MonitorItems.FirstOrDefault(m => m.SourceId == metric.SourceId);
+                    var metadata = MonitorItem.MonitorItems.Find(metric.SourceId);
 
                     switch (metric.SourceId)
                     {
@@ -196,7 +196,7 @@ namespace IOTLinkAddon.Service
                             PublishDiscoveryAndValue(string.Format(metadata.Topic, gpu.Index), metadata.Icon, null, string.Format(labelFormat, prefix, metadata.Label), metric.Value == 0 ? "off" : "on", string.Format(metadata.Prefix, gpu.Index));
                             break;
                         default:
-                            PublishDiscoveryAndValue(string.Format(metadata.Topic, gpu.Index), metadata.Icon, metric.Units, string.Format(labelFormat, prefix, metadata.Label), metric.Value, string.Format(metadata.Prefix, gpu.Index), metadata.Precision);
+                            PublishDiscoveryAndValue(string.Format(metadata.Topic, gpu.Index), metadata.Icon, metric.Units, string.Format(labelFormat, prefix, metadata.Label), metadata.Format(metric.Value), string.Format(metadata.Prefix, gpu.Index));
                             break;
                     }                    
                 }
@@ -219,23 +219,20 @@ namespace IOTLinkAddon.Service
 
             if (metric.IsEnabled(_config))
             {
-                var metadata = MonitorItem.MonitorItems.FirstOrDefault(m => m.SourceId == metric.SourceId);
+                var metadata = MonitorItem.MonitorItems.Find(metric.SourceId);
                 
-                PublishDiscoveryAndValue(metadata.Topic, metadata.Icon, metric.Units, metadata.Label, metric.Value, metadata.Prefix, metadata.Precision);
+                PublishDiscoveryAndValue(metadata.Topic, metadata.Icon, metric.Units, metadata.Label, metadata.Format(metric.Value), metadata.Prefix);
             }
         }
-
-        private void PublishDiscoveryAndValue(string topic, string icon, string units, string label, float? value, string prefix, int precision)
-            => PublishDiscoveryAndValue(topic, icon, units, label, value?.ToString($"F{precision}"), prefix);
 
         private void PublishDiscoveryAndValue(string topic, string icon, string units, string label, string value, string prefix)
         {
             topic = $"Stats/{topic}";
-            PublishDiscovery(topic, icon, units, label, value, prefix);
+            PublishDiscovery(topic, icon, units, label, prefix);
             PublishItem(topic, value);
         }
 
-        private void PublishDiscovery(string topic, string icon, string units, string label, string value, string prefix)
+        private void PublishDiscovery(string topic, string icon, string units, string label, string prefix)
         {
             GetManager().PublishDiscoveryMessage(this, topic, prefix, new HassDiscoveryOptions()
             {
