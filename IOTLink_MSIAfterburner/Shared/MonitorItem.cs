@@ -29,8 +29,12 @@ namespace IOTLinkAddon.Shared
         public static readonly IEnumerable<MonitorItem> MonitorItems = new List<MonitorItem>()
         {
             new NumericMonitorItem(SourceType.Framerate, "Framerate/FPS", "Framerate", Monitor, "Framerate", "FPS"),
+            new NumericMonitorItem(SourceType.Frametime, "Framerate/Frametime", "Frametime", Monitor, "Framerate", "ms"),
+            new NumericMonitorItem(SourceType.FramerateMin, "Framerate/Minimum", "Frametime", Monitor, "Framerate", "FPS"),
             new NumericMonitorItem(SourceType.FramerateAverage, "Framerate/Average", "Average", Monitor, "Framerate", "FPS"),
+            new NumericMonitorItem(SourceType.FramerateMax, "Framerate/Maximum", "Frametime", Monitor, "Framerate", "FPS"),
             new NumericMonitorItem(SourceType.Framerate1Percent, "Framerate/1Percent", "1% Low", Monitor, "Framerate", "FPS"),
+            new NumericMonitorItem(SourceType.Framerate01Percent, "Framerate/01Percent", "0.1% Low", Monitor, "Framerate", "FPS"),
 
             new NumericMonitorItem(SourceType.CpuTemp, "CPU/Temperature", "CPU Temperature", Thermometer, "CPU:Temp", "CPU"),
             new NumericMonitorItem(SourceType.CpuUsage, "CPU/Usage", "CPU Usage", Processor, "CPU:Usage", "CPU"),
