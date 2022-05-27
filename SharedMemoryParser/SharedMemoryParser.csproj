@@ -9,6 +9,7 @@
     <RepositoryUrl>https://github.com/kwilliams1987/IOTLink_MSIAfterburner</RepositoryUrl>
     <AssemblyVersion>1.0.1.2</AssemblyVersion>
     <FileVersion>$(AssemblyVersion)</FileVersion>
+    <DebugType>embedded</DebugType>
   </PropertyGroup>
 
   <ItemGroup>
