@@ -36,7 +36,7 @@ namespace IOTLinkAddon.Agent
         {
             Trace("Started");
 
-            if (_sharedMemoryManager == null)
+            if (_sharedMemoryManager is null)
             {
                 Trace("Shared Memory Manager is not available, cancelling.");
                 return;
@@ -44,7 +44,7 @@ namespace IOTLinkAddon.Agent
 
             var (gpus, metrics) = _sharedMemoryManager.GetAfterburnerData();
             
-            foreach (var metric in metrics.Where(m => m.GpuIndex == null))
+            foreach (var metric in metrics.Where(m => m.GpuIndex is null))
             {
                 TraceLoop($"Sending metric data for {metric.ItemType.SourceId}.");
                 GetManager().SendAgentResponse(this, new

@@ -9,5 +9,7 @@
         public float Maximum { get; set; }
 
         public MonitorItem ItemType { get; set; }
+
+        public override string ToString() => $"{ItemType}: {Value}{Units}";
     }
 }

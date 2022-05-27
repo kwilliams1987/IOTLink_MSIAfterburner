@@ -14,7 +14,7 @@ namespace IOTLinkAddon.Shared
 
         public override string Format(float? value)
         {
-            if (value == null)
+            if (value is null)
             {
                 return null;
             }

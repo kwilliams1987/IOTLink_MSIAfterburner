@@ -54,7 +54,7 @@ namespace IOTLinkAddon.Shared.MemoryManager
         public (IEnumerable<AfterburnerGpu> Gpus, IEnumerable<AfterburnerMetric> Metrics) GetAfterburnerData()
         {
             Trace("Started");
-            if (_sharedMemory == null)
+            if (_sharedMemory is null)
             {
                 Trace("Shared Memory is not available.");
                 return (Enumerable.Empty<AfterburnerGpu>(), Enumerable.Empty<AfterburnerMetric>());
@@ -165,8 +165,11 @@ namespace IOTLinkAddon.Shared.MemoryManager
                         gpuIndex = null;
                         break;
                     case SourceType.Framerate:
+                    case SourceType.FramerateMin:
                     case SourceType.FramerateAverage:
+                    case SourceType.FramerateMax:
                     case SourceType.Framerate1Percent:
+                    case SourceType.Framerate01Percent:
                         // When Framerate is not active it returns float.MaxValue
                         value = (value == float.MaxValue ? null : value);
                         break;

@@ -12,7 +12,7 @@ namespace SharedMemoryParser
             {
                 var (gpus, metrics) = memoryManager.GetAfterburnerData();
 
-                foreach (var metric in metrics.Where(m => m.GpuIndex == uint.MaxValue))
+                foreach (var metric in metrics.Where(m => m.GpuIndex is null))
                 {
                     Console.WriteLine("Found metric: {0}, {1}{2}", metric.ItemType.SourceId, metric.Value, metric.Units);
                 }
