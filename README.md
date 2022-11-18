@@ -1,5 +1,7 @@
 # MSI Afterburner addon for IOTLink
 
+**Since IOTLink has been discontinued, support for this addon is also discontinued.**
+
 This addon enhances the [IOTLink](https://gitlab.com/iotlink/iotlink) service with telemetry from MSI Afterburner.
 
 ## Features
